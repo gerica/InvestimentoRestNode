@@ -43,8 +43,8 @@ daoLocal.findPessoa = () => {
             return cursor;
         }
     });
-}
+};
 
 module.exports = {
     dao: daoLocal
-}
+};

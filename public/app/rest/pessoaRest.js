@@ -23,7 +23,7 @@ router.use(function(req, res, next) {
 
 router.route('/')
     .get(function(req, res) {
-        res.json({ message: "Bem vindo." });
+        res.json({ message: 'Bem vindo.' });
     });
 
 router.route('/getAll')

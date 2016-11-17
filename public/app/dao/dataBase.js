@@ -25,7 +25,7 @@ function open() {
 var db = {
     open: open,
     close: close
-}
+};
 
 
 function close(db) {

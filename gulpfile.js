@@ -4,14 +4,18 @@ const babel = require('gulp-babel');
 const eslint = require('gulp-eslint');
 // Gulp dependencies go here
 
-gulp.task('default', function() {
-    // Run ESLint
-    gulp.src(["public/app/**/*.js"])
+gulp.task('clean', function(){
+	return gulp.src('dist/')
+			.pipe(clean());
+});
+gulp.task('eslint', function(){
+	return gulp.src(["public/app/**/*.js"])
         .pipe(eslint())
         .pipe(eslint.format());
+});
+
+gulp.task('default',['clean', 'eslint'], function() {
     // browser source
-    gulp.src("public/app/**/*.js")
-        .pipe(babel())
-        .pipe(clean({ force: true }))
+    return gulp.src("public/app/**/*.js")                
         .pipe(gulp.dest("dist"));
 });
