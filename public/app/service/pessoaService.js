@@ -1,4 +1,4 @@
-var daoPessoa = require('../dao/pessoaDAO_2');
+var daoPessoa = require('../dao/pessoaDAO');
 
 // console.log(daoPessoa.findPessoa());
 

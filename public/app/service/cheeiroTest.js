@@ -18936,7 +18936,7 @@ var count = 0;
 
 
 daoFundamento.save(papeisFundamento, (err, result)=>{
-        console.log("Cadastrado com sucesso");
+        console.log('Cadastrado com sucesso');
 
       });
 
