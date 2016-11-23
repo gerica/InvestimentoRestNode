@@ -1,9 +1,11 @@
 //lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
+const mongodb = require('mongodb');
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var mongoClient = mongodb.MongoClient;
+const mongoClient = mongodb.MongoClient;
+const db_name = 'carteiraInvestimentoDB';
+
 // Connection URL. This is where your mongodb server is running.
-var url = 'mongodb://localhost:27017/carteiraInvestimentoDB';
+const url = 'mongodb://localhost:27017/' + db_name;
 
 function open() {
 
@@ -22,7 +24,7 @@ function open() {
     });
 }
 
-var db = {
+const db = {
     open: open,
     close: close
 };

@@ -44,10 +44,12 @@ parseHTML(function(data) {
             // console.log(element.children);      
             element.children.forEach((element_child) => {
                 if (element_child.name == 'span') {
+                    var nomeEmpresa = element_child.attribs.title;
                     element_child.children.forEach((element_child_2) => {
                         element_child_2.children.forEach((element_child_3) => {
                             fundamento = fundamentus();
-                            fundamento.papel = element_child_3.data;
+                            fundamento.papel.papel = element_child_3.data;
+                            fundamento.papel.nome = nomeEmpresa;
                             papeisFundamento.push(fundamento);
                             count = 0;
                             // console.log(element_child_3.data);

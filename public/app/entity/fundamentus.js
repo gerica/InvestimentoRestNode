@@ -1,5 +1,8 @@
+var criarPapel = require('./papel');
+
 var criarFundamentus = function() {
-    var _papel;
+    var _key;
+    var _key_papel;
     var _cotacao;
     var _p_l;
     var _p_vp;
@@ -20,7 +23,9 @@ var criarFundamentus = function() {
     var _div_brut_patrim;
     var _cresc_rec_5a;
     return {
-        papel: _papel,
+        key: _key,
+        key_papel: _key_papel,
+        papel: criarPapel(),
         cotacao: _cotacao,
         p_l: _p_l,
         p_vp: _p_vp,
@@ -43,11 +48,9 @@ var criarFundamentus = function() {
     };
 };
 
-// Papel	Cotação	P/L	P/VP	PSR	Div.Yield	P/Ativo	P/Cap.Giro	P/EBIT	P/Ativ Circ.Liq	EV/EBIT	Mrg Ebit	Mrg. Líq.	Liq. Corr.	ROIC	ROE	Liq.2meses	Patrim. Líq	Dív.Brut/ Patrim.	Cresc. Rec.5a
-// MNSA4	0,47	0,00	0,00	0,000	0,00%	0,000	0,00	0,00	0,00	0,00	-208,15%	-362,66%	3,63	-13,50%	145,70%	0,00	-9.105.000,00	-6,52	-41,11%
-
 // var obj = criarFundamentus();
-// obj.papel = 'asdf';
+// obj.papel.papel = 'HGTX3';
 // console.log(obj);
+
 
 module.exports = criarFundamentus;
