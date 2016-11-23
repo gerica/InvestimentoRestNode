@@ -1,14 +1,21 @@
 var db = require('./dataBase');
 
 var dao = {};
-dao.findPessoa = (callBack) => {
+dao.findPessoa = (usuario, callBack) => {
     // console.log(request);
     var dataBase = null;
     db.open().then((db) => {
         dataBase = db;
-        var collection = db.collection('pessoas');
+        var collection = db.collection('pessoa');
+        console.log('------------');
+        var where ={
+            login: usuario.login,
+            password: usuario.password
+        };
+        console.log(where);
+        console.log('------------');
 
-        collection.find().toArray(function(err, result) {
+        collection.find(where).toArray(function(err, result) {
             if (err) {
                 console.log(err);
             } else if (result.length) {
@@ -30,5 +37,16 @@ dao.findPessoa = (callBack) => {
 };
 
 // console.log(dao.findPessoa());
+
+// var criarUsuario = require('../entity/usuario');
+// var usuario = criarUsuario();
+//         usuario.login = 'rogerio';
+//         usuario.password = 'cardoso';
+
+
+// dao.findPessoa(usuario, (err, result)=>{
+//     console.log(err, 'erro');
+//     console.log(result, 'result');
+// });
 
 module.exports = dao;

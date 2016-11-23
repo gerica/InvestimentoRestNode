@@ -20,7 +20,7 @@ router.route('/')
         });
     });
 
-router.route('/getAll')
+router.route('/findAll')
     .get(function(req, res) {
         pessoaService.findPessoa((err, result) => {
             // console.log(result);

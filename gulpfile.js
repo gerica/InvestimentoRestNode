@@ -10,12 +10,12 @@ gulp.task('clean', function(){
 });
 gulp.task('eslint', function(){
 	return gulp.src(["public/app/**/*.js"])
-        .pipe(eslint())
+        //.pipe(eslint())
         .pipe(eslint.format());
 });
 
-gulp.task('default',['clean', 'eslint'], function() {
+gulp.task('default',['eslint'], function() {
     // browser source
-    return gulp.src("public/app/**/*.js")                
+    return gulp.src(["public/app/**/*.js", "public/app/**/*.json"])
         .pipe(gulp.dest("dist"));
 });
