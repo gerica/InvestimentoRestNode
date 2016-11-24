@@ -1,12 +1,16 @@
 var criarUsuario = function() {
-    var _login;
+    var _email;
+    var _username;
     var _password;
+    var _passwordrp;
     var _token;
-    
+
     return {
-        login: _login,
+        email: _email,
+        username: _username,
         password: _password,
-        token: _token        
+        passwordrp: _passwordrp,
+        token: _token
     };
 };
 

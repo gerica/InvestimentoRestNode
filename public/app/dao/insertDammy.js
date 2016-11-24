@@ -7,23 +7,24 @@ dao.insert = () => {
     var dataBase = null;
     db.open().then((db) => {
         dataBase = db;
-        var collection = db.collection('pessoa');
+        var collection = db.collection('tb_pessoa');
         // console.log(collection);
-         //HURRAY!! We are connected. :)    
+        //HURRAY!! We are connected. :)    
 
         var usuario = criarUsuario();
-        usuario.login = 'rogerio@cardoso';
+        usuario.email = 'rogerio@cardoso.com.br';
+        usuario.username = 'Rogério Cardoso';
         usuario.password = 'cardoso';
 
         // Insert some users
-        collection.insert([usuario], function (err, result) {
-          if (err) {
-            console.log(err);
-          } else {
-            console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
-          }
-          //Close connection
-          db.close();
+        collection.insert([usuario], function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                console.log('Inserted %d documents into the "users" collection. The documents inserted with "_id" are:', result.length, result);
+            }
+            //Close connection
+            db.close();
         });
 
 

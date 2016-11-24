@@ -25,7 +25,9 @@ var port = process.env.PORT || 3000; // set our port
 
 // REGISTER OUR ROUTES -------------------------------
 // all of our routes will be prefixed with /api
-app.use('/usuario', require('./pessoaRest'));
 app.use('/auth', require('./loginRest'));
+app.use('/usuario', require('./pessoaRest'));
+app.use('/papel', require('./papelRest'));
+app.use('/cotacao', require('./cotacaoRest'));
 
 app.listen(port);

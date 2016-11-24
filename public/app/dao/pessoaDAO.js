@@ -1,28 +1,29 @@
-var db = require('./dataBase');
+const db = require('./dataBase');
+const table_name = 'tb_pessoa';
 
 var dao = {};
 dao.findPessoa = (usuario, callBack) => {
-    // console.log(request);
     var dataBase = null;
     db.open().then((db) => {
         dataBase = db;
-        var collection = db.collection('pessoa');
-        console.log('------------');
-        var where ={
-            login: usuario.login,
+        var collection = db.collection(table_name);
+        var where = {
+            email: usuario.email,
             password: usuario.password
         };
-        console.log(where);
-        console.log('------------');
 
         collection.find(where).toArray(function(err, result) {
             if (err) {
-                console.log(err);
+                var msg = 'Ocorreu erro ao recuperar usuário';
+                handleError(msg, where);
+                callBack(err, result);
             } else if (result.length) {
-                // console.log('Found:', result);
                 callBack(err, result);
             } else {
-                console.log('No document(s) found with defined "find" criteria!');
+                var msg = 'Nenhum usuário cadastrado com os parâmetros informado.';
+                // + JSON.stringify(usuario)
+                handleError(msg, where);
+                callBack(err, msg);
             }
             //Close connection
             dataBase.close();
@@ -30,17 +31,26 @@ dao.findPessoa = (usuario, callBack) => {
 
 
     }).catch((err) => {
-        console.log(err);
+        var msg = 'Ocorreu erro ao acessar a base de dados. ';
+        handleError(msg, where);
+        callBack(err, null);
         dataBase.close();
 
     });
 };
 
+function handleError(error, params) {
+    // In a real world app, we might use a remote logging infrastructure
+    // console.error(error, params);
+
+}
+
+
 // console.log(dao.findPessoa());
 
 // var criarUsuario = require('../entity/usuario');
 // var usuario = criarUsuario();
-//         usuario.login = 'rogerio';
+//         usuario.login = 'rogerio@cardoso';
 //         usuario.password = 'cardoso';
 
 
